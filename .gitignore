@@ -61,5 +61,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-Wub Woofers/Temp/UnityLockfile
-Wub Woofers/Library/EditorInstance.json
+Wub Woofers/Temp
+Wub Woofers/Library
+Wub Woofers/Logs
+Wub Woofers/Packages
