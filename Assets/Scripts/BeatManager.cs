@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeMove : MonoBehaviour
+public class BeatManager : MonoBehaviour
 {
 
+    
+    public GameObject beatManager;
+    public AudioClip[] audioClips;
 
     // Start is called before the first frame update
     void Start()
