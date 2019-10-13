@@ -6,16 +6,14 @@ public class Enemy : MonoBehaviour
 {
     
     public float speed = 5;
+    public GameObject[] parts;
+    public GameObject eye;
     Rigidbody rb;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
     void Update()
     {  
         rb.velocity = Vector3.forward * speed * Time.deltaTime;
@@ -26,6 +24,12 @@ public class Enemy : MonoBehaviour
     void EnemyDeath()
     {
         Instantiate(deathParticle, transform.position, Quaternion.identity);
+        for (int i = 0; i < parts.Length; i++)
+        {
+            GameObject gameObject = parts[i].GetComponent<GameObject>();
+            Destroy(gameObject);
+
+        }
         Destroy(this.gameObject);
     }
 
@@ -43,14 +47,19 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Hit()
     {
+        
         float timeHit = Time.time; //Stores the current time
         while(Time.time - timeHit < slowDownTime) //wait until (slowDownTime) seconds have passed
         {
-            Debug.Log(speed);
+            //Debug.Log(speed);
             speed *= slowDownSpeed; //gradually decreases speed
             yield return new WaitForEndOfFrame();
         }
 
         EnemyDeath();
     }
+     private void OnMouseUp()
+        {
+            StartCoroutine(Hit());
+        }
 }
