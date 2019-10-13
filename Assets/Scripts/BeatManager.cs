@@ -8,16 +8,6 @@ public class BeatManager : MonoBehaviour
     
     public GameObject beatManager;
     public AudioClip[] audioClips;
+    
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

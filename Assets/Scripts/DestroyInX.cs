@@ -5,12 +5,17 @@ using UnityEngine;
 public class DestroyInX : MonoBehaviour
 {
     public float time;
-    void Update()
+
+    private void Update() 
     {
         time -= Time.deltaTime;
         if (time <= 0)
         {
             Destroy(this.gameObject);
         }
+    }
+    public void DestroyInXSec(float inputTime)
+    {
+        time = inputTime;
     }
 }
