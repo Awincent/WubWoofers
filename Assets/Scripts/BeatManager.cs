@@ -10,10 +10,13 @@ public class BeatManager : MonoBehaviour
     public float bpm;
     private float timerMax;
     private float currentTimer;
+    public Material lit;
+    public Material notLit;
     //List<Action>() allTimedActions = new List<Action>();
 
     public void Start()
     {
+        GetComponent<Renderer>().material = notLit;
         bpm = 120;
         timerMax = 50 / (bpm / 60);
         currentTimer = 0;
@@ -21,14 +24,12 @@ public class BeatManager : MonoBehaviour
     public void FixedUpdate()
     {
 
+        GetComponent<Renderer>().material = notLit;
+
         currentTimer += 1;
         if(currentTimer >= timerMax)
         {
-
-            print("Beat");
-
-
-
+            GetComponent<Renderer>().material = lit;
             currentTimer = 0;
             //runAllActions(/*allTimedActions*/);
 
