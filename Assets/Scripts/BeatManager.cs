@@ -7,46 +7,64 @@ using UnityEngine;
 public class BeatManager : MonoBehaviour
 {
 
+    public delegate void Action();
+
     public float bpm;
     private float timerMax;
     private float currentTimer;
     public Material lit;
     public Material notLit;
-    //List<Action>() allTimedActions = new List<Action>();
+    Queue<Action> allTimedActions = new Queue<Action>();
 
     public void Start()
     {
+
         GetComponent<Renderer>().material = notLit;
-        bpm = 120;
-        timerMax = 50 / (bpm / 60);
+        timerMax = 1f /(bpm / 60f);
         currentTimer = 0;
+
     }
-    public void FixedUpdate()
+    public void Update()
     {
 
-        GetComponent<Renderer>().material = notLit;
 
-        currentTimer += 1;
+        currentTimer += Time.deltaTime;
+
         if(currentTimer >= timerMax)
         {
-            GetComponent<Renderer>().material = lit;
-            currentTimer = 0;
-            //runAllActions(/*allTimedActions*/);
-
+            currentTimer = currentTimer % timerMax;
+            runAllActions(allTimedActions);
+            StartCoroutine("lightTheFuses");
         }
         
     }
 
-    //public void runAllActions(/*allActions List<Actions>*/)
-    //{
+    
 
-    //    for (int i = 0; i < /*allActions.lenght*/ 0; i++)
-    //    {
+    public void addActionToQueue(Action actionToAdd)
+    {
 
-    //        //allActions(i);
+        allTimedActions.Enqueue(actionToAdd);
 
-    //    }
+    }
 
-    //}
+    private void runAllActions(Queue<BeatManager.Action> allActions)
+    {
 
+        while (allTimedActions.Count > 0f)
+        {
+            Action a = allTimedActions.Dequeue();
+            a();
+        }
+
+    }
+
+    public IEnumerator lightTheFuses()
+    {
+
+        GetComponent<Renderer>().material = lit;
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<Renderer>().material = notLit;
+        yield break;
+    }
 }
