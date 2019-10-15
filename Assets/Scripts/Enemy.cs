@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
     
     public float speed = 5;
     public GameObject[] parts;
