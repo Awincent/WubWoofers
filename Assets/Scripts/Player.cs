@@ -25,4 +25,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ShootBullet()
+    {
+        
+            Instantiate(bullet, whereShoot.transform.position, whereShoot.transform.rotation);
+    }
+
 }
