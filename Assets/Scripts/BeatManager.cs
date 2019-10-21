@@ -12,14 +12,18 @@ public class BeatManager : MonoBehaviour
     public float bpm;
     private float timerMax;
     private float currentTimer;
-    public Material lit;
-    public Material notLit;
     Queue<Action> allTimedActions = new Queue<Action>();
+
+    public static BeatManager instance;
 
     public void Start()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
 
-        GetComponent<Renderer>().material = notLit;
+        
         timerMax = 1f /(bpm / 60f);
         currentTimer = 0;
     }
@@ -33,7 +37,6 @@ public class BeatManager : MonoBehaviour
         {
             currentTimer = currentTimer % timerMax;
             runAllActions(allTimedActions);
-            StartCoroutine("lightTheFuses");
         }
         
     }
@@ -58,13 +61,4 @@ public class BeatManager : MonoBehaviour
 
     }
 
-
-    public IEnumerator lightTheFuses()
-    {
-
-        GetComponent<Renderer>().material = lit;
-        yield return new WaitForSeconds(0.1f);
-        GetComponent<Renderer>().material = notLit;
-        yield break;
-    }
 }
