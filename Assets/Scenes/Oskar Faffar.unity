@@ -2043,7 +2043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f00ef3adc7ae7c41b70e0979d1a08ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 120
+  bpm: 140
   lit: {fileID: 2100000, guid: f8250d248bd679a4a95ddb2560e612e4, type: 2}
   notLit: {fileID: 2100000, guid: a25282018d9deb042a8e3e6de8c09954, type: 2}
 --- !u!65 &1556040419
