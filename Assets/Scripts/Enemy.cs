@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    GameObject beatKeeper;
     public float speed = 5;
     public GameObject[] parts;
     public GameObject eye;
@@ -12,7 +11,6 @@ public class Enemy : MonoBehaviour
     
     void Start()
     {
-        beatKeeper = GameObject.FindGameObjectWithTag("beatKeeper");
         rb = GetComponent<Rigidbody>();
     }
     void Update()
@@ -49,19 +47,15 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Hit()
     {
-        
-        float timeHit = Time.time; //Stores the current time
-        while(Time.time - timeHit < slowDownTime) //wait until (slowDownTime) seconds have passed
-        {
-            //Debug.Log(speed);
-            speed *= slowDownSpeed; //gradually decreases speed
-            yield return new WaitForEndOfFrame();
-        }
 
-        beatKeeper.GetComponent<BeatManager>().addActionToQueue(EnemyDeath);
+        speed *= slowDownSpeed;
+        BeatManager.instance.addActionToQueue(EnemyDeath);
+        yield break;
+
     }
      private void OnMouseUp()
         {
+        
             StartCoroutine(Hit());
         }
 }
