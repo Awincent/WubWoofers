@@ -22,7 +22,6 @@ public class BeatManager : MonoBehaviour
         GetComponent<Renderer>().material = notLit;
         timerMax = 1f /(bpm / 60f);
         currentTimer = 0;
-
     }
     public void Update()
     {
@@ -58,6 +57,7 @@ public class BeatManager : MonoBehaviour
         }
 
     }
+
 
     public IEnumerator lightTheFuses()
     {

@@ -81,6 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b324703b2e05b98449d52fffb6650a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beatKeeper: {fileID: 9045942228305718253, guid: 8e2e222d779094c44967e6f27b5a730d,
+    type: 3}
   speed: 300
   parts:
   - {fileID: 7142896873914266295}

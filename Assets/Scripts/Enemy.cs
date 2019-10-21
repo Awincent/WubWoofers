@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    
+    GameObject beatKeeper;
     public float speed = 5;
     public GameObject[] parts;
     public GameObject eye;
@@ -13,6 +12,7 @@ public class Enemy : MonoBehaviour
     
     void Start()
     {
+        beatKeeper = GameObject.FindGameObjectWithTag("beatKeeper");
         rb = GetComponent<Rigidbody>();
     }
     void Update()
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     }
 
     public ParticleSystem deathParticle;
-    void EnemyDeath()
+    public void EnemyDeath()
     {
         Instantiate(deathParticle, transform.position, Quaternion.identity);
         for (int i = 0; i < parts.Length; i++)
@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
 
         }
         Destroy(this.gameObject);
+        print("Object Destroyed");
     }
 
     public void OnTriggerEnter(Collider other) 
@@ -57,7 +58,7 @@ public class Enemy : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        EnemyDeath();
+        beatKeeper.GetComponent<BeatManager>().addActionToQueue(EnemyDeath);
     }
      private void OnMouseUp()
         {
