@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     public GameObject[] spawnPoints;
     int curentSpawner;
     public GameObject enemyPrefab;
+    
 
     public float targetTime = 2;
     float staticTime;
@@ -29,14 +30,16 @@ public class Spawner : MonoBehaviour
 
         if(targetTime <= 0.0f)
         {
-            SpawnEnemy();
+
+            targetTime = staticTime;
+            BeatManager.instance.addActionToQueue(SpawnEnemy);
         }
         
+
     }
     
     public void SpawnEnemy()
     {
-        targetTime = staticTime;
         curentSpawner = Random.Range(0, spawnPoints.Length); 
         Instantiate(enemyPrefab, spawnPoints[curentSpawner].transform);
 
