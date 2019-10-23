@@ -6,15 +6,28 @@ public class Enemy : MonoBehaviour
 {
     public float speed;
     public float slowDownSpeed;
-    public float health;
+    public float slowDownTime;
+    protected float health;
     public List<enemyPart> parts;
-    public Rigidbody rb;
-    
+    protected Rigidbody rb;
+    public ParticleSystem deathParticle;
 
     private void Start()
     {
 
-        rb = GetComponent<Rigidbody>();
+        if(parts.Count >= 1)
+        {
+
+            health = parts.Count;
+
+        }
+        else
+        {
+
+            health = 1;
+        }
+        
+
 
     }
     public virtual void OnTriggerEnter(Collider other)
@@ -29,28 +42,33 @@ public class Enemy : MonoBehaviour
     public IEnumerator Hit()
     {
 
-        speed *= slowDownSpeed;
 
-        if(health > 0)
+        if(parts.Count > 1)
         {
             health--;
-            partDeath(parts[parts.Count -1]);
 
+            BeatManager.instance.addActionToQueue(parts[parts.Count - 1].DestroyPart);
+            parts.RemoveAt(parts.Count - 1);
         }
         else
         {
 
 
+            speed = Mathf.Lerp(speed, speed * slowDownSpeed, slowDownTime);
             BeatManager.instance.addActionToQueue(EnemyDeath);
 
         }
         yield break;
 
     }
-    public ParticleSystem deathParticle;
     public void EnemyDeath()
     {
-        Instantiate(deathParticle, transform.position, Quaternion.identity);
+
+        if(deathParticle != null)
+        {
+
+            Instantiate(deathParticle, transform.position, Quaternion.identity);
+        }
         Destroy(this.gameObject);
         print("Object Destroyed");
 
@@ -58,8 +76,14 @@ public class Enemy : MonoBehaviour
     void partDeath(enemyPart part)
     {
 
-        
-        Destroy(part);
+
+        BeatManager.instance.addActionToQueue(part.DestroyPart);
+
+    }
+    private void OnMouseUp()
+    {
+
+        StartCoroutine(Hit());
 
     }
 }
