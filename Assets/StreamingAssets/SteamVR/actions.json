@@ -65,7 +65,7 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/WubWoffers/in/NewAction",
+      "name": "/actions/WubWoffers/in/Grab",
       "type": "boolean"
     }
   ],
