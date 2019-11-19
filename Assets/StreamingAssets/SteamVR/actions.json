@@ -33,7 +33,7 @@
     },
     {
       "name": "/actions/default/in/Squeeze",
-      "type": "vector1",
+      "type": "boolean",
       "requirement": "optional"
     },
     {
@@ -65,7 +65,7 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/WubWoffers/in/NewAction",
+      "name": "/actions/WubWoffers/in/Grab",
       "type": "boolean"
     }
   ],

@@ -17,11 +17,11 @@ namespace Valve.VR
     public class SteamVR_Input_ActionSet_WubWoffers : Valve.VR.SteamVR_ActionSet
     {
         
-        public virtual SteamVR_Action_Boolean NewAction
+        public virtual SteamVR_Action_Boolean Grab
         {
             get
             {
-                return SteamVR_Actions.wubWoffers_NewAction;
+                return SteamVR_Actions.wubWoffers_Grab;
             }
         }
     }
