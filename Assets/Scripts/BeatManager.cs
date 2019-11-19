@@ -10,6 +10,8 @@ public class BeatManager : MonoBehaviour
     public delegate void Action();
 
     public float bpm;
+    public AudioClip song;
+    private AudioSource audioSource;
     private float timerMax;
     private float currentTimer;
     Queue<Action> allTimedActions = new Queue<Action>();
@@ -18,6 +20,10 @@ public class BeatManager : MonoBehaviour
 
     public void Start()
     {
+        audioSource = this.gameObject.GetComponent<AudioSource>();
+        audioSource.clip = song;
+        audioSource.Play();
+
         if (instance == null)
         {
             instance = this;
@@ -26,6 +32,8 @@ public class BeatManager : MonoBehaviour
         
         timerMax = 1f /(bpm / 60f);
         currentTimer = 0;
+
+
     }
     public void Update()
     {
