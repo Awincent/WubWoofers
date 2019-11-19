@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         //curentSpawner = Random.Range(0, spawnPoints.Length);
-        Debug.Log(curentSpawner);
+
 
         targetTime -= Time.deltaTime;
 
