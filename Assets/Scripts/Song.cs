@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Song : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string songName;
+    public int bpm;
+    public AudioClip songAudioClip;
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
