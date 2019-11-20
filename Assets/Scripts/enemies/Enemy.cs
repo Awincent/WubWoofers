@@ -11,9 +11,14 @@ public class Enemy : MonoBehaviour
     public List<enemyPart> parts;
     protected Rigidbody rb;
     public ParticleSystem deathParticle;
+    public AudioClip enemyDeathSound;
+    private AudioSource audioSource;
 
     private void Start()
     {
+
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = enemyDeathSound;
 
         if(parts.Count >= 1)
         {
@@ -63,6 +68,7 @@ public class Enemy : MonoBehaviour
     }
     public void EnemyDeath()
     {
+        audioSource.Play();
 
         if(deathParticle != null)
         {

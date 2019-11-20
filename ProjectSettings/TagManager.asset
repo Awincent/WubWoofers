@@ -10,6 +10,8 @@ TagManager:
   - FxTemporaire
   - beatKeeper
   - Weapon
+  - controllerLeft
+  - controllerRight
   layers:
   - Default
   - TransparentFX
