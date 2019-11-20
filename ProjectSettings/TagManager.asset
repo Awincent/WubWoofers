@@ -13,6 +13,7 @@ TagManager:
   - controllerLeft
   - controllerRight
   - EnemySoundPlayer
+  - SnapSoundPlayer
   layers:
   - Default
   - TransparentFX
