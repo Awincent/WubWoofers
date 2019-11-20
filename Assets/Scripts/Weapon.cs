@@ -21,6 +21,7 @@ public class Weapon : MonoBehaviour
     protected GameObject grabbingController;
     public float pickupTimer;
     protected float currentPickupTimer;
+    protected AudioSource snapSoundPlayer;
 
     // Start is called before the first frame update
     protected void Start()
@@ -35,6 +36,8 @@ public class Weapon : MonoBehaviour
         shoot.AddOnStateDownListener(TriggerDown, rightControllerSource);
         shoot.AddOnStateUpListener(TriggerUp, rightControllerSource);
         grabbingController = null;
+
+        snapSoundPlayer = GameObject.FindGameObjectWithTag("SnapSoundPlayer").GetComponent<AudioSource>();
 
         leftController = GameObject.FindGameObjectWithTag("controllerLeft");
         rightController = GameObject.FindGameObjectWithTag("controllerRight");
@@ -109,7 +112,7 @@ public class Weapon : MonoBehaviour
 
 
                 rb.isKinematic = false;
-                rb.velocity = actingController.GetComponent<Rigidbody>().velocity;
+                //rb.velocity = actingController.GetComponent<Rigidbody>().velocity;
                 actingController = null;
                 grabbingController = null;
                 transform.parent = null;
@@ -120,6 +123,7 @@ public class Weapon : MonoBehaviour
             else if (grabbed == false)
 
             {
+                snapSoundPlayer.Play();
                 currentPickupTimer = pickupTimer;
                 grabbingController = actingController;
                 rb.isKinematic = true;
