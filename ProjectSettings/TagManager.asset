@@ -12,6 +12,7 @@ TagManager:
   - Weapon
   - controllerLeft
   - controllerRight
+  - EnemySoundPlayer
   layers:
   - Default
   - TransparentFX
