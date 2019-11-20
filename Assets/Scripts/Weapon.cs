@@ -157,7 +157,9 @@ public class Weapon : MonoBehaviour
         if(rightHand == true && grabbingController == rightController || rightHand == false && grabbingController == leftController)
         {
 
-            BeatManager.instance.addActionToQueue(Shoot);
+
+            
+            BeatManager.instance.addActionToHalfbeatQueue(Shoot);
 
         }
 
