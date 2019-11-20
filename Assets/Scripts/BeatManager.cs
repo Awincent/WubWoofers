@@ -16,8 +16,8 @@ public class BeatManager : MonoBehaviour
     private float currentTimer;
     private float halfbeatTimerMax;
     private float currentHalfbeatTimer;
-    Queue<Action> allTimedActions = new Queue<Action>();
-    Queue<Action> allHalfbeatActions = new Queue<Action>();
+    public Queue<Action> allTimedActions = new Queue<Action>();
+    public Queue<Action> allHalfbeatActions = new Queue<Action>();
 
 
     public static BeatManager instance;
@@ -37,7 +37,7 @@ public class BeatManager : MonoBehaviour
         
         timerMax = 1f /(bpm / 60f);
         currentTimer = 0;
-        halfbeatTimerMax = 1f / (bpm / 120f);
+        halfbeatTimerMax = 1f / (bpm / 30f);
         currentHalfbeatTimer = 0;
 
     }
@@ -58,6 +58,7 @@ public class BeatManager : MonoBehaviour
         {
 
             currentHalfbeatTimer = currentHalfbeatTimer % halfbeatTimerMax;
+            runHalfbeatActions(allHalfbeatActions);
 
         }
         
@@ -67,26 +68,7 @@ public class BeatManager : MonoBehaviour
     public void addActionToHalfbeatQueue(Action actionToAdd)
     {
 
-        bool alreadyAdded = false;
-
-        foreach (var item in allHalfbeatActions)
-        {
-
-            if(actionToAdd == item)
-            {
-
-                alreadyAdded = true;
-
-            }
-
-        }
-        if (alreadyAdded == false)
-        {
-
-
-            allHalfbeatActions.Enqueue(actionToAdd);
-
-        }
+        allHalfbeatActions.Enqueue(actionToAdd);
 
     }
     private void runHalfbeatActions(Queue<BeatManager.Action> allActions)
