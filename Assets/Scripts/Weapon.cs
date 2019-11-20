@@ -110,6 +110,7 @@ public class Weapon : MonoBehaviour
 
                 rb.isKinematic = false;
                 rb.velocity = actingController.GetComponent<Rigidbody>().velocity;
+                
                 transform.parent = null;
                 grabbed = false;
                 actingModel.SetActive(true);
