@@ -12,12 +12,16 @@ public class Enemy : MonoBehaviour
     protected Rigidbody rb;
     public ParticleSystem deathParticle;
     public AudioClip enemyDeathSound;
-    private AudioSource audioSource;
+    protected AudioSource audioSource;
+    public GameObject enemySoundPlayer;
 
-    private void Start()
+
+    public void Start()
     {
+        print("did enemy start");
+        enemySoundPlayer = GameObject.FindGameObjectWithTag("EnemySoundPlayer");
 
-        
+
 
         if(parts.Count >= 1)
         {
@@ -67,7 +71,7 @@ public class Enemy : MonoBehaviour
     }
     public void EnemyDeath()
     {
-        audioSource = this.gameObject.GetComponent<AudioSource>();
+        audioSource = enemySoundPlayer.gameObject.GetComponent<AudioSource>();
         audioSource.clip = enemyDeathSound;
         audioSource.enabled = true;
         audioSource.Play();
