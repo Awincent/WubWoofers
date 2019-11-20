@@ -17,8 +17,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
 
-        audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.clip = enemyDeathSound;
+        
 
         if(parts.Count >= 1)
         {
@@ -68,6 +67,9 @@ public class Enemy : MonoBehaviour
     }
     public void EnemyDeath()
     {
+        audioSource = this.gameObject.GetComponent<AudioSource>();
+        audioSource.clip = enemyDeathSound;
+        audioSource.enabled = true;
         audioSource.Play();
 
         if(deathParticle != null)
