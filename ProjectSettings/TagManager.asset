@@ -9,6 +9,7 @@ TagManager:
   - projectile
   - FxTemporaire
   - beatKeeper
+  - Weapon
   layers:
   - Default
   - TransparentFX

@@ -8,10 +8,10 @@ public class Weapon : MonoBehaviour
     public GameObject bullet;
     public GameObject whereShoot;
     public float grabDistance;
-    public GameObject leftController;
-    public GameObject leftModel;
-    public GameObject rightController;
-    public GameObject rightModel;
+    private GameObject leftController; //p
+    private GameObject leftModel; //p
+    private GameObject rightController; //p
+    private GameObject rightModel; //p
     public SteamVR_Action_Boolean shoot;
     public SteamVR_Action_Boolean grab;
     public SteamVR_Input_Sources leftControllerSource;
@@ -37,6 +37,13 @@ public class Weapon : MonoBehaviour
         shoot.AddOnStateDownListener(TriggerDown, rightControllerSource);
         shoot.AddOnStateUpListener(TriggerUp, rightControllerSource);
         grabbingController = null;
+
+        leftController = GameObject.FindGameObjectWithTag("controllerLeft");
+        rightController = GameObject.FindGameObjectWithTag("controllerRight");
+
+        leftModel =leftController.transform.Find("Model").gameObject;
+        rightModel = rightController.transform.Find("Model").gameObject;
+
     }
 
     // Update is called once per frame
@@ -116,6 +123,7 @@ public class Weapon : MonoBehaviour
                 currentPickupTimer = pickupTimer;
                 grabbingController = actingController;
                 rb.isKinematic = true;
+                print("hejj");
                 actingModel.SetActive(false);
                 transform.parent = actingController.transform;
                 transform.position = actingController.transform.position;
@@ -159,7 +167,7 @@ public class Weapon : MonoBehaviour
 
 
             
-            BeatManager.instance.addActionToHalfbeatQueue(Shoot);
+            BeatManager.instance.addActionToQueue(Shoot);
 
         }
 

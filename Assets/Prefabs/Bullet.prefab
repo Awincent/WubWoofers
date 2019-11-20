@@ -156,11 +156,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 4946487564395512324}
   speed: 10000
-  lerpSpeed: 2
+  lerpSpeed: 1
   strechFactor: 9.55
   strechSpeed: 0.01
   timeTillSlowdown: 2
   slowDownFactor: 0.2
+  gravity: 0
 --- !u!114 &4946487564395512323
 MonoBehaviour:
   m_ObjectHideFlags: 0
