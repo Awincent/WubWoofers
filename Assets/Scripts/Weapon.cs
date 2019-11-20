@@ -110,7 +110,8 @@ public class Weapon : MonoBehaviour
 
                 rb.isKinematic = false;
                 rb.velocity = actingController.GetComponent<Rigidbody>().velocity;
-                
+                actingController = null;
+                grabbingController = null;
                 transform.parent = null;
                 grabbed = false;
                 actingModel.SetActive(true);
@@ -122,7 +123,6 @@ public class Weapon : MonoBehaviour
                 currentPickupTimer = pickupTimer;
                 grabbingController = actingController;
                 rb.isKinematic = true;
-                print("hejj");
                 actingModel.SetActive(false);
                 transform.parent = actingController.transform;
                 transform.position = actingController.transform.position;

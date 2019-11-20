@@ -157,7 +157,7 @@ MonoBehaviour:
   rigidbody: {fileID: 4946487564395512324}
   speed: 10000
   lerpSpeed: 1
-  strechFactor: 9.55
+  strechFactor: 1.5
   strechSpeed: 0.01
   timeTillSlowdown: 2
   slowDownFactor: 0.2
