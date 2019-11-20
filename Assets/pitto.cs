@@ -6,6 +6,7 @@ using UnityEngine;
 public class pitto : Weapon
 {
     bool holding = false;
+    protected AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class pitto : Weapon
 
         base.Start();
 
+        audioSource = gameObject.GetComponent<AudioSource>();
 
 
     }
@@ -112,6 +114,7 @@ public class pitto : Weapon
     public override void Shoot()
     {
 
+        audioSource.Play();
 
         Instantiate(bullet, whereShoot.transform.position, whereShoot.transform.rotation);
 
