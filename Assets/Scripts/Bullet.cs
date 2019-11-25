@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
     private bool stopping = false;
     public float slowDownFactor;
     public float gravity;
+    public GameObject sphere;
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, transform.forward * speed * Time.deltaTime, lerpSpeed);
-        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1, 1, strechFactor * rigidbody.velocity.z), strechSpeed);
+        sphere.transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(0.2f, 0.2f, strechFactor * rigidbody.velocity.z * 0.2f), strechSpeed);
 
         if (remainingTimeTillSlowdown > 0) { remainingTimeTillSlowdown -= Time.deltaTime; }
         else
