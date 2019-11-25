@@ -29,14 +29,14 @@ public class pitto : Weapon
         if (holding == true)
         {
 
-            bool alreadyAdded = BeatManager.instance.allTimedActions.Contains(Shoot);
+            bool alreadyAdded = BeatManager.instance.allHalfbeatActions.Contains(Shoot);
 
 
             if (alreadyAdded == false)
             {
 
                 print("Woop?");
-                BeatManager.instance.addActionToQueue(Shoot);
+                BeatManager.instance.addActionToHalfbeatQueue(Shoot);
 
             }
 
