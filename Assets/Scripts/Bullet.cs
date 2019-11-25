@@ -9,8 +9,8 @@ public class Bullet : MonoBehaviour
     public Rigidbody rigidbody;
     public float speed;
     public float lerpSpeed;
-    public float strechFactor;
-    public float strechSpeed;
+    //public float strechFactor;
+    //public float strechSpeed;
     public float timeTillSlowdown;
     private float remainingTimeTillSlowdown;
     private bool stopping = false;
@@ -28,8 +28,8 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, transform.forward * speed * Time.deltaTime, lerpSpeed);
-        sphere.transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(0.2f, 0.2f, strechFactor * rigidbody.velocity.z * 0.2f), strechSpeed);
+        //rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, transform.forward * speed * Time.deltaTime, lerpSpeed);
+        //sphere.transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(0.2f, 0.2f, strechFactor * rigidbody.velocity.z * 0.2f), strechSpeed);
 
         if (remainingTimeTillSlowdown > 0) { remainingTimeTillSlowdown -= Time.deltaTime; }
         else

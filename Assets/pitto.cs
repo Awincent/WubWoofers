@@ -105,6 +105,17 @@ public class pitto : Weapon
 
     }
 
+    public override void SqueezeIn(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
+    {
+        base.SqueezeIn(fromAction, fromSource);
+
+        if(grabbed == true)
+        {
+
+            holding = false;
+
+        }
+    }
     public override void addShootToQueue()
     {
 
