@@ -26,7 +26,9 @@ public class BeatManager : MonoBehaviour
     {
         audioSource = this.gameObject.GetComponent<AudioSource>();
         audioSource.clip = song;
-        audioSource.Play();
+
+        addActionToQueue(audioSource.Play);
+        
 
         if (instance == null)
         {
