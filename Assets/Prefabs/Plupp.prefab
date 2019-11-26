@@ -117,7 +117,8 @@ MonoBehaviour:
   parts: []
   deathParticle: {fileID: 3401211136174360456, guid: 66af75575d9625c4da60adc06a478270,
     type: 3}
-  enemyDeathSound: {fileID: 8300000, guid: 557b7566e37ee1a4db1745ec66891fa0, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: 4f3f904d04fd61e4d969d2c2328ff2aa, type: 3}
+  enemySoundPlayer: {fileID: 0}
 --- !u!82 &3956326668259989091
 AudioSource:
   m_ObjectHideFlags: 0

@@ -144,8 +144,6 @@ MonoBehaviour:
   rigidbody: {fileID: 4946487564395512324}
   speed: 10000
   lerpSpeed: 1
-  strechFactor: 30
-  strechSpeed: 0.01
   timeTillSlowdown: 5
   slowDownFactor: 0.2
   gravity: 0
@@ -157,7 +155,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4946487564395512327}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df4fb9c5b64bbc1479b94851e80357ee, type: 3}
   m_Name: 
@@ -171,7 +169,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4946487564395512327}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.1
