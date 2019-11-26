@@ -18,6 +18,9 @@ public class BeatManager : MonoBehaviour
     private float currentHalfbeatTimer;
     public Queue<Action> allTimedActions = new Queue<Action>();
     public Queue<Action> allHalfbeatActions = new Queue<Action>();
+    private List<int> beatTimers;
+    private List<Action> beatTimerActions;
+
 
 
     public static BeatManager instance;
@@ -28,7 +31,7 @@ public class BeatManager : MonoBehaviour
         audioSource.clip = song;
 
         addActionToQueue(audioSource.Play);
-        
+
 
         if (instance == null)
         {
@@ -36,8 +39,8 @@ public class BeatManager : MonoBehaviour
         }
 
 
-        
-        timerMax = 1f /(bpm / 60f);
+
+        timerMax = 1f / (bpm / 60f);
         currentTimer = 0;
         halfbeatTimerMax = 1f / (bpm / 30f);
         currentHalfbeatTimer = 0;
@@ -51,19 +54,20 @@ public class BeatManager : MonoBehaviour
         currentHalfbeatTimer += Time.deltaTime;
 
 
-        if(currentTimer >= timerMax)
+        if (currentTimer >= timerMax)
         {
             currentTimer = currentTimer % timerMax;
             runAllActions(allTimedActions);
         }
-        if(currentHalfbeatTimer >= halfbeatTimerMax)
+        if (currentHalfbeatTimer >= halfbeatTimerMax)
         {
 
             currentHalfbeatTimer = currentHalfbeatTimer % halfbeatTimerMax;
             runHalfbeatActions(allHalfbeatActions);
 
         }
-        
+
+
     }
 
 
@@ -101,6 +105,28 @@ public class BeatManager : MonoBehaviour
             Action a = allTimedActions.Dequeue();
             a();
         }
+
+        for (int i = 0; i < beatTimers.Count; i++)
+        {
+            beatTimers[i]--;
+
+            if (beatTimers[i] <= 0)
+            {
+                beatTimerActions[i]();
+                beatTimers.RemoveAt(i);
+                beatTimerActions.RemoveAt(i);
+
+            }
+        }
+
+    }
+
+    public void beatCounter(int howMany, Action what)
+    {
+
+        beatTimers.Add(howMany);
+        beatTimerActions.Add(what);
+
 
     }
 
