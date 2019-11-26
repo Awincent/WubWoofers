@@ -6,7 +6,10 @@ public class LightBlink : MonoBehaviour
 {
 
     public GameObject lamp;
-    bool isOn;
+    public bool doubleTempo = false;
+    public bool standardTempo = false;
+    public bool halfTempo = false;
+    bool isOn = true;
 
 
 
@@ -22,16 +25,18 @@ public class LightBlink : MonoBehaviour
             bool alreadyAdded = BeatManager.instance.allTimedActions.Contains(LampBlink);
 
 
-            if (alreadyAdded == false)
+            if (alreadyAdded == false && standardTempo == true)
             {
 
                 BeatManager.instance.addActionToQueue(LampBlink);
 
-            }
+            }            
+            else if (alreadyAdded == false && doubleTempo == true)
+            {
 
+                BeatManager.instance.addActionToHalfbeatQueue(LampBlink);
 
-
-        
+            }   
     }
 
     public void LampBlink()
