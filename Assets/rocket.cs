@@ -12,7 +12,10 @@ public class rocket : MonoBehaviour
     [SerializeField] float deviation;
     [SerializeField] float deviationSpeed;
     [SerializeField] float explodeSpeed;
+    [SerializeField] float explodeTime;
+    float remainingExplodeTime;
     bool active = false;
+
     private Vector3 currentDeviation_;
     [SerializeField] GameObject explotion;
     [SerializeField] GameObject model;
@@ -20,6 +23,7 @@ public class rocket : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        remainingExplodeTime = explodeTime;
         BeatManager.instance.addActionToQueue(startThrust);
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<CapsuleCollider>();
@@ -29,6 +33,18 @@ public class rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(rb.isKinematic == true)
+        {
+            remainingExplodeTime -= Time.deltaTime;
+
+            if(remainingExplodeTime >= 0)
+            {
+                Destroy(this.gameObject);
+                
+
+            }
+        }
+
 
 
         if (active)
@@ -57,6 +73,7 @@ public class rocket : MonoBehaviour
     }
     private void Explode()
     {
+        active = false;
         speed = 0;
         deviation = 0;
         rb.isKinematic = true;

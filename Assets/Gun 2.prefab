@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3561852576017750490}
   - component: {fileID: 457570698974460460}
   - component: {fileID: 3823953647115393917}
-  - component: {fileID: 2141745433048179748}
   - component: {fileID: 8962740805590971054}
+  - component: {fileID: 6310406012487412933}
   m_Layer: 0
   m_Name: Gun 2
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141745433048179746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.37, y: 1.673, z: -13.889}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8591483060244343588}
@@ -64,31 +64,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &2141745433048179748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2141745433048179746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9abe69ec6f6d2d148bac3707f10708e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 4946487564395512327, guid: 03da1f198d6f2fd4c9c62fe3b4aa3e5e, type: 3}
-  whereShoot: {fileID: 2141745433048179747}
-  grabDistance: 0.2
-  shoot:
-    actionPath: /actions/default/in/GrabPinch
-    needsReinit: 0
-  grab:
-    actionPath: /actions/default/in/GrabGrip
-    needsReinit: 0
-  leftControllerSource: 1
-  rightControllerSource: 2
-  grabbed: 0
-  pickupTimer: 0.5
 --- !u!82 &8962740805590971054
 AudioSource:
   m_ObjectHideFlags: 0
@@ -185,6 +160,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6310406012487412933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141745433048179746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87dbf1f26443d264ead037c2b7fe75b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 8765842220233623939, guid: 7268e64096e809849b0e92edd6f75530, type: 3}
+  whereShoot: {fileID: 2141745433048179747}
+  grabDistance: 0.2
+  shoot:
+    actionPath: /actions/default/in/GrabPinch
+    needsReinit: 0
+  grab:
+    actionPath: /actions/default/in/GrabGrip
+    needsReinit: 0
+  leftControllerSource: 1
+  rightControllerSource: 2
+  grabbed: 0
+  pickupTimer: 0.1
 --- !u!1 &2141745433048179747
 GameObject:
   m_ObjectHideFlags: 0
