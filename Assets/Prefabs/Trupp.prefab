@@ -70,7 +70,7 @@ MonoBehaviour:
   - {fileID: 7534276329571162986}
   deathParticle: {fileID: 3401211136174360456, guid: 66af75575d9625c4da60adc06a478270,
     type: 3}
-  enemyDeathSound: {fileID: 0}
+  enemyDeathSound: {fileID: 8300000, guid: 6841e642dac671548b48a23eaad59d38, type: 3}
   enemySoundPlayer: {fileID: 0}
 --- !u!136 &1243576064019942898
 CapsuleCollider:
@@ -300,11 +300,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.6000005
       objectReference: {fileID: 0}
-    - target: {fileID: 8967789682122916470, guid: 247464c5f069e5c4ab56be01a4030045,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4989615422875387146, guid: 247464c5f069e5c4ab56be01a4030045,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -416,11 +411,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.60000026
       objectReference: {fileID: 0}
-    - target: {fileID: 8967789682122916470, guid: 247464c5f069e5c4ab56be01a4030045,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4989615422875387146, guid: 247464c5f069e5c4ab56be01a4030045,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -531,11 +521,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.60000026
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967789682122916470, guid: 247464c5f069e5c4ab56be01a4030045,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989615422875387146, guid: 247464c5f069e5c4ab56be01a4030045,
         type: 3}
