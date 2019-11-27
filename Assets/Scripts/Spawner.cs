@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
 
+    public spawnWave[] waves;
     public GameObject[] spawnPoints;
     int curentSpawner;
     public GameObject enemyPrefab;
