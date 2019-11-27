@@ -20,7 +20,7 @@ public class rocketLauncher : Weapon
     public override void Shoot()
     {
 
-        Instantiate(bullet, whereShoot.transform);
+        Instantiate(bullet, whereShoot.transform.position, whereShoot.transform.rotation);
 
     }
 

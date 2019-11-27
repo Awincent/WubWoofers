@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 8765842220233623938}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,13 +154,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1000
-  explotionSize: 25
-  deviation: 90
+  explotionSize: 10
+  deviation: 35
   deviationSpeed: 0.001
-  explodeSpeed: 5
+  explodeSpeed: 0.5
   explodeTime: 3
   explotion: {fileID: 8765842219571846030}
   model: {fileID: 7553283454926072421}
+  timeTillDeath: 10
 --- !u!54 &8765842220233623938
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -247,17 +248,17 @@ PrefabInstance:
     - target: {fileID: 4421560102873548475, guid: 817ab3ca5f75d0e499edbff3530e519b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 4421560102873548475, guid: 817ab3ca5f75d0e499edbff3530e519b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 4421560102873548475, guid: 817ab3ca5f75d0e499edbff3530e519b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 817ab3ca5f75d0e499edbff3530e519b, type: 3}

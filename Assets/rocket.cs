@@ -15,10 +15,13 @@ public class rocket : MonoBehaviour
     [SerializeField] float explodeTime;
     float remainingExplodeTime;
     bool active = false;
-
     private Vector3 currentDeviation_;
     [SerializeField] GameObject explotion;
     [SerializeField] GameObject model;
+    [SerializeField] float timeTillDeath;
+    float remainingTimeTillDeath;
+    bool growingExplotion = true;
+    bool recedingExplotion = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,24 +30,47 @@ public class rocket : MonoBehaviour
         BeatManager.instance.addActionToQueue(startThrust);
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<CapsuleCollider>();
+        remainingTimeTillDeath = timeTillDeath;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(rb.isKinematic == true)
+
+        remainingTimeTillDeath-= Time.deltaTime;
+
+        if (rb.isKinematic == true)
         {
             remainingExplodeTime -= Time.deltaTime;
-
-            if(remainingExplodeTime >= 0)
+            
+            if(remainingExplodeTime >= explodeTime / 2)
             {
-                Destroy(this.gameObject);
+
+
+                explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(explotionSize, explotionSize, explotionSize), explodeSpeed);
+
+            }
+            else if (remainingExplodeTime <= explodeTime / 2)
+            {
+
+                explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(0,0,0), explodeTime);
                 
 
             }
-        }
+            else if (remainingExplodeTime <= 0)
+            {
 
+                addDeleteToQueue();
+
+            }
+        }
+        if(remainingExplodeTime <= 0)
+        {
+
+            BeatManager.instance.addActionToQueue(Explode);
+
+        }
 
 
         if (active)
@@ -67,8 +93,25 @@ public class rocket : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Enemy")
+        {
 
-        BeatManager.instance.addActionToQueue(Explode);
+            collider.enabled = false;
+            print("OOga");
+            BeatManager.instance.addActionToQueue(Explode);
+        }
+    }
+
+    private void addDeleteToQueue()
+    {
+
+        BeatManager.instance.addActionToQueue(delete);
+
+    }
+    private void delete()
+    {
+
+        Destroy(this.gameObject);
 
     }
     private void Explode()
@@ -79,7 +122,7 @@ public class rocket : MonoBehaviour
         rb.isKinematic = true;
         model.SetActive(false);
         explotion.SetActive(true);
-        explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(explotionSize, explotionSize, explotionSize), explodeSpeed);
+        //explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(explotionSize, explotionSize, explotionSize), explodeSpeed);
 
     }
 
