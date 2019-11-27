@@ -106,18 +106,24 @@ public class BeatManager : MonoBehaviour
             a();
         }
 
-        for (int i = 0; i < beatTimers.Count; i++)
+        if (beatTimerActions.Count > 0 && beatTimerActions != null)
         {
-            beatTimers[i]--;
 
-            if (beatTimers[i] <= 0)
+            for (int i = 0; i < beatTimers.Count; i++)
             {
-                beatTimerActions[i]();
-                beatTimers.RemoveAt(i);
-                beatTimerActions.RemoveAt(i);
+                beatTimers[i]--;
 
+                if (beatTimers[i] <= 0)
+                {
+                    beatTimerActions[i]();
+                    beatTimers.RemoveAt(i);
+                    beatTimerActions.RemoveAt(i);
+
+                }
             }
+
         }
+
 
     }
 
