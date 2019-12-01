@@ -22,6 +22,7 @@ public class Weapon : MonoBehaviour
     public float pickupTimer;
     protected float currentPickupTimer;
     protected AudioSource snapSoundPlayer;
+    protected AudioSource audioSource;
 
     // Start is called before the first frame update
     protected void Start()

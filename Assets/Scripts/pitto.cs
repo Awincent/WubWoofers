@@ -6,8 +6,6 @@ using UnityEngine;
 public class pitto : Weapon
 {
     bool holding = false;
-    protected AudioSource audioSource;
-
 
     // Start is called before the first frame update
     void Start()

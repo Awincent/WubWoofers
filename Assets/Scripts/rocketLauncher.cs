@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class rocketLauncher : Weapon
 {
-
+    
     private void Start()
     {
         base.Start();
+        audioSource = gameObject.GetComponent<AudioSource>();
 
 
     }
@@ -19,6 +20,9 @@ public class rocketLauncher : Weapon
     }
     public override void Shoot()
     {
+
+        audioSource.Play();
+
 
         Instantiate(bullet, whereShoot.transform.position, whereShoot.transform.rotation);
 
