@@ -10,7 +10,7 @@ public class ExploMatChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        material.shader.
+
     }
 
     // Update is called once per frame

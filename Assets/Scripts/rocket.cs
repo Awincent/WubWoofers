@@ -38,34 +38,37 @@ public class rocket : MonoBehaviour
     void Update()
     {
 
-        remainingTimeTillDeath-= Time.deltaTime;
+        remainingTimeTillDeath -= Time.deltaTime;
+
+        remainingExplodeTime -= Time.deltaTime;
 
         if (rb.isKinematic == true)
         {
-            remainingExplodeTime -= Time.deltaTime;
-            
-            if(remainingExplodeTime >= explodeTime / 2)
+
+            if (remainingExplodeTime >= explodeTime / 2)
             {
 
 
                 explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(explotionSize, explotionSize, explotionSize), explodeSpeed);
 
             }
-            else if (remainingExplodeTime <= explodeTime / 2)
+            else if (remainingExplodeTime <= explodeTime)
             {
 
-                explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(0,0,0), explodeTime);
-                
+                explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(0, 0, 0), explodeSpeed);
+
 
             }
-            else if (remainingExplodeTime <= 0)
+            if (remainingExplodeTime <= 0)
             {
 
-                addDeleteToQueue();
+
+                Destroy(this.gameObject);
+                //addDeleteToQueue();
 
             }
         }
-        if(remainingExplodeTime <= 0)
+        if (remainingTimeTillDeath <= 0)
         {
 
             BeatManager.instance.addActionToQueue(Explode);
@@ -90,7 +93,7 @@ public class rocket : MonoBehaviour
         active = true;
 
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
