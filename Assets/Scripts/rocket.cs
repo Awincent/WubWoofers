@@ -63,8 +63,8 @@ public class rocket : MonoBehaviour
             {
 
 
-                Destroy(this.gameObject);
-                //addDeleteToQueue();
+                //Destroy(this.gameObject);
+                addDeleteToQueue();
 
             }
         }

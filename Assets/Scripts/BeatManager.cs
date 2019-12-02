@@ -41,6 +41,7 @@ public class BeatManager : MonoBehaviour
 
 
         timerMax = 1f / (bpm / 60f);
+        //timerMax = 1f;
         currentTimer = 0;
         halfbeatTimerMax = 1f / (bpm / 30f);
         currentHalfbeatTimer = 0;
