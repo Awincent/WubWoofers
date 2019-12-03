@@ -9,6 +9,7 @@ Shader "Custom/eeeh" {
  Tags { "RenderType" = "Opaque" }
  
  CGPROGRAM
+ //Notice the "vertex:vert" at the end of the next line
  #pragma surface surf Standard fullforwardshadows vertex:vert
  
  sampler2D _MainTex;
@@ -37,5 +38,3 @@ Shader "Custom/eeeh" {
  
 FallBack "Diffuse"
 }
- 
- 
