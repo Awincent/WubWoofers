@@ -162,10 +162,11 @@ MonoBehaviour:
   explodeTime: 3
   explotion: {fileID: 8765842219571846030}
   model: {fileID: 7553283454926072421}
-  timeTillDeath: 10
-  explosionSound: {fileID: 0}
-  ShootSound: {fileID: 0}
-  implosionSound: {fileID: 0}
+  timeTillDeath: 3
+  audioSource: {fileID: 3696628218253944610}
+  explosionSound: {fileID: 8300000, guid: d32cada2c7e409c4da8b5e0bc6e5d0de, type: 3}
+  ShootSound: {fileID: 8300000, guid: 6aff73ed25bb3c746bf50044acca2295, type: 3}
+  implosionSound: {fileID: 8300000, guid: 7cbeec6f79ab1534883600a05b4ca03a, type: 3}
 --- !u!54 &8765842220233623938
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -238,7 +239,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

@@ -23,19 +23,21 @@ public class rocket : MonoBehaviour
     bool growingExplotion = true;
     bool recedingExplotion = false;
 
-    protected AudioSource audioSource;
+    public AudioSource audioSource;
     public AudioClip explosionSound;
     public AudioClip ShootSound;
 
     public AudioClip implosionSound;
-    private bool implotionTrue;
+    private bool implotionTrue; 
+    private bool explosionTrue = false;
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = this.gameObject.GetComponent<AudioSource>();
+        //audioSource = this.gameObject.GetComponent<AudioSource>();
         audioSource.clip = ShootSound;
         audioSource.Play();
         remainingExplodeTime = explodeTime;
@@ -53,10 +55,12 @@ public class rocket : MonoBehaviour
 
         remainingTimeTillDeath -= Time.deltaTime;
 
-        remainingExplodeTime -= Time.deltaTime;
+
 
         if (rb.isKinematic == true)
         {
+
+            remainingExplodeTime -= Time.deltaTime;
 
             if (remainingExplodeTime >= explodeTime / 2)
             {
@@ -65,17 +69,22 @@ public class rocket : MonoBehaviour
                 explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(explotionSize, explotionSize, explotionSize), explodeSpeed);
 
             }
-            else if (remainingExplodeTime <= explodeTime)
+            else if (remainingExplodeTime < explodeTime /2)
             {
+
+
                 if (implotionTrue == false)
                 {
                     implotionTrue = true;
-                    PlayImplosionSound();
+                    BeatManager.instance.addActionToQueue(PlayImplosionSound);
+
                 }
+                else
+                {
 
-                explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(0, 0, 0), explodeSpeed);
+                    explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(0, 0, 0), explodeSpeed);
 
-
+                }
             }
             if (remainingExplodeTime <= 0)
             {
@@ -137,9 +146,7 @@ public class rocket : MonoBehaviour
     }
     private void Explode()
     {
-        remainingExplodeTime = explodeTime;
-        audioSource.clip = explosionSound;
-        audioSource.Play();
+        //remainingExplodeTime = explodeTime;
         active = false;
         speed = 0;
         deviation = 0;
@@ -147,12 +154,19 @@ public class rocket : MonoBehaviour
         model.SetActive(false);
         explotion.SetActive(true);
         //explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(explotionSize, explotionSize, explotionSize), explodeSpeed);
+        if (explosionTrue == false)
+        {
+            explosionTrue = true;
+            audioSource.clip = explosionSound;
+            audioSource.Play();
+        }
 
     }
 
     private void PlayImplosionSound()
     {
 
+        implotionTrue = true;
         audioSource.clip = implosionSound;
         audioSource.Play();
 
