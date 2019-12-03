@@ -23,14 +23,27 @@ public class rocket : MonoBehaviour
     bool growingExplotion = true;
     bool recedingExplotion = false;
 
+    protected AudioSource audioSource;
+    public AudioClip explosionSound;
+    public AudioClip ShootSound;
+
+    public AudioClip implosionSound;
+    private bool implotionTrue;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = this.gameObject.GetComponent<AudioSource>();
+        audioSource.clip = ShootSound;
+        audioSource.Play();
         remainingExplodeTime = explodeTime;
         BeatManager.instance.addActionToQueue(startThrust);
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<CapsuleCollider>();
         remainingTimeTillDeath = timeTillDeath;
+        implotionTrue = false;
 
     }
 
@@ -54,6 +67,11 @@ public class rocket : MonoBehaviour
             }
             else if (remainingExplodeTime <= explodeTime)
             {
+                if (implotionTrue == false)
+                {
+                    implotionTrue = true;
+                    PlayImplosionSound();
+                }
 
                 explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(0, 0, 0), explodeSpeed);
 
@@ -119,6 +137,8 @@ public class rocket : MonoBehaviour
     }
     private void Explode()
     {
+        audioSource.clip = explosionSound;
+        audioSource.Play();
         active = false;
         speed = 0;
         deviation = 0;
@@ -126,6 +146,14 @@ public class rocket : MonoBehaviour
         model.SetActive(false);
         explotion.SetActive(true);
         //explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(explotionSize, explotionSize, explotionSize), explodeSpeed);
+
+    }
+
+    private void PlayImplosionSound()
+    {
+
+        audioSource.clip = implosionSound;
+        audioSource.Play();
 
     }
 
