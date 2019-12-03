@@ -161,7 +161,7 @@ MonoBehaviour:
   explodeTime: 3
   explotion: {fileID: 8765842219571846030}
   model: {fileID: 7553283454926072421}
-  timeTillDeath: 10
+  timeTillDeath: 3
 --- !u!54 &8765842220233623938
 Rigidbody:
   m_ObjectHideFlags: 0

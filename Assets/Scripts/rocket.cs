@@ -119,6 +119,7 @@ public class rocket : MonoBehaviour
     }
     private void Explode()
     {
+        remainingExplodeTime = explodeTime;
         active = false;
         speed = 0;
         deviation = 0;
