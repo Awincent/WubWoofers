@@ -8,10 +8,10 @@ public class rocketLauncher : Weapon
     public delegate void Action();
     float lateTimerMax = 0.1f;
     float lateTimerCurrent = 0.1f;
-    public enum ReloadState {ready, feeding, loading, finishing}
+    public enum ReloadState { ready, feeding, loading, finishing }
     private ReloadState reloadState;
     private int whatReloadState;
-    
+
 
     private void Start()
     {
@@ -29,12 +29,12 @@ public class rocketLauncher : Weapon
         {
             case ReloadState.ready:
 
-                if(whatReloadState == 1)
+                if (whatReloadState == 1)
                 {
-                    
+
                     reloadState = ReloadState.feeding;
                     BeatManager.instance.addActionToQueue(feedAmmo);
-
+                    print("Feed part1");
                 }
 
                 break;
@@ -45,7 +45,7 @@ public class rocketLauncher : Weapon
 
                     reloadState = ReloadState.loading;
                     BeatManager.instance.addActionToQueue(load);
-
+                    print("Load Part1");
                 }
 
                 break;
@@ -62,8 +62,14 @@ public class rocketLauncher : Weapon
                 break;
             case ReloadState.finishing:
 
-                reloadState = ReloadState.ready;
-                whatReloadState = 0;
+                if (whatReloadState == 4)
+                {
+
+                    reloadState = ReloadState.ready;
+                    whatReloadState = 0;
+
+                }
+
 
                 break;
         }
@@ -72,13 +78,12 @@ public class rocketLauncher : Weapon
 
     public override void Shoot()
     {
-        if (reloadState == ReloadState.ready)
+        if (reloadState == ReloadState.ready && whatReloadState == 0)
         {
 
             whatReloadState = 1;
             audioSource.Play();
             Instantiate(bullet, whereShoot.transform.position, whereShoot.transform.rotation);
-            reloading = true;
 
         }
         else
@@ -91,20 +96,19 @@ public class rocketLauncher : Weapon
     }
     public void feedAmmo()
     {
-
-        BeatManager.instance.addActionToQueue(load);
+        print("Feed Part2");
+        whatReloadState++;
 
     }
     public void load()
     {
-
-        BeatManager.instance.addActionToQueue(reloadDone);
-
+        whatReloadState++;
+        print("Load part 2");
     }
     public void reloadDone()
     {
 
-        reloading = false;
+        whatReloadState++;
 
     }
 
