@@ -164,9 +164,9 @@ MonoBehaviour:
   model: {fileID: 7553283454926072421}
   timeTillDeath: 3
   audioSource: {fileID: 3696628218253944610}
-  explosionSound: {fileID: 8300000, guid: 237209b451d894345bca579b370873b1, type: 3}
-  ShootSound: {fileID: 8300000, guid: 1f012d6ddc81e084c9423f7b7f88f6de, type: 3}
-  implosionSound: {fileID: 8300000, guid: e8bf3416b49d85e4cafcba35189bd36e, type: 3}
+  explosionSound: {fileID: 8300000, guid: 98e2276e0fa255945a16b8567d4c1bcd, type: 3}
+  ShootSound: {fileID: 8300000, guid: 2e7759b1392a1fb4797cc157868a6188, type: 3}
+  implosionSound: {fileID: 8300000, guid: ddaf417b8e484984a971dd19bf182d13, type: 3}
 --- !u!54 &8765842220233623938
 Rigidbody:
   m_ObjectHideFlags: 0
