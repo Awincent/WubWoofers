@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class rocketLauncher : Weapon
 {
-    
+    bool reloading = false;
+
     private void Start()
     {
         base.Start();
@@ -20,11 +21,40 @@ public class rocketLauncher : Weapon
     }
     public override void Shoot()
     {
+        if (reloading == false)
+        {
 
-        audioSource.Play();
 
+            audioSource.Play();
+            Instantiate(bullet, whereShoot.transform.position, whereShoot.transform.rotation);
+            BeatManager.instance.addActionToQueue(feedAmmo);
+            reloading = true;
 
-        Instantiate(bullet, whereShoot.transform.position, whereShoot.transform.rotation);
+        }
+        else
+        {
+
+            return;
+
+        }
+
+    }
+    public void feedAmmo()
+    {
+
+        BeatManager.instance.addActionToQueue(load);
+
+    }
+    public void load()
+    {
+
+        BeatManager.instance.addActionToQueue(reloadDone);
+
+    }
+    public void reloadDone()
+    {
+
+        reloading = false;
 
     }
 
