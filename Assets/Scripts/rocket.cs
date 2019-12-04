@@ -30,6 +30,7 @@ public class rocket : MonoBehaviour
     public AudioClip implosionSound;
     private bool implotionTrue; 
     private bool explosionTrue = false;
+    public GameObject trail;
 
 
 
@@ -81,7 +82,7 @@ public class rocket : MonoBehaviour
                 }
                 else
                 {
-
+                    trail.SetActive(false);
                     explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(0, 0, 0), explodeSpeed);
 
                 }
@@ -156,6 +157,7 @@ public class rocket : MonoBehaviour
         //explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(explotionSize, explotionSize, explotionSize), explodeSpeed);
         if (explosionTrue == false)
         {
+            audioSource.volume = .2f;
             explosionTrue = true;
             audioSource.clip = explosionSound;
             audioSource.Play();
@@ -165,6 +167,7 @@ public class rocket : MonoBehaviour
 
     private void PlayImplosionSound()
     {
+        audioSource.volume = .5f;
 
         implotionTrue = true;
         audioSource.clip = implosionSound;
