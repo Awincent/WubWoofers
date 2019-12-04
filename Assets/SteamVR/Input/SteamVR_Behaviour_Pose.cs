@@ -233,6 +233,12 @@ namespace Valve.VR
                 lastFrameUpdated = currentFrame;
             }
         }
+        public void Update()
+        {
+
+            print(GetComponent<Rigidbody>().velocity);
+
+        }
 
         /// <summary>
         /// Gets the localized name of the device that the action corresponds to.

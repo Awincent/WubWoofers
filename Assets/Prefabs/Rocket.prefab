@@ -436,9 +436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715982502318b884eb1a7567ce9a7993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1162.2
-  explotionSize: 77.97
-  deviation: 45
+  speed: 2000
+  explotionSize: 10
+  deviation: 60
   deviationSpeed: 0.001
   explodeSpeed: 0.1
   explodeTime: 3
@@ -489,7 +489,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -522,7 +522,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.866
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -569,6 +569,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8765842220233623941}
     m_Modifications:
+    - target: {fileID: 5799375786468731848, guid: 817ab3ca5f75d0e499edbff3530e519b,
+        type: 3}
+      propertyPath: m_Name
+      value: Rocket
+      objectReference: {fileID: 0}
     - target: {fileID: 4421560102873548475, guid: 817ab3ca5f75d0e499edbff3530e519b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -638,11 +643,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 5799375786468731848, guid: 817ab3ca5f75d0e499edbff3530e519b,
-        type: 3}
-      propertyPath: m_Name
-      value: Rocket
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 817ab3ca5f75d0e499edbff3530e519b, type: 3}
