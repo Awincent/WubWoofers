@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2000
-  explotionSize: 60
+  explotionSize: 15
   deviation: 60
   deviationSpeed: 0.001
   explodeSpeed: 0.1
@@ -658,6 +658,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RocketTrail
       objectReference: {fileID: 0}
+    - target: {fileID: 3690112688662417127, guid: aa04545477d08b84ea19fb7047c05c90,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2835363381916355595, guid: aa04545477d08b84ea19fb7047c05c90,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -731,6 +736,11 @@ PrefabInstance:
     - target: {fileID: 2891408930197831503, guid: aa04545477d08b84ea19fb7047c05c90,
         type: 3}
       propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891408930197831503, guid: aa04545477d08b84ea19fb7047c05c90,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -8,10 +8,10 @@ public class rocketLauncher : Weapon
     public delegate void Action();
     float lateTimerMax = 0.1f;
     float lateTimerCurrent = 0.1f;
-    public enum ReloadState {ready, feeding, loading, finishing}
+    public enum ReloadState { ready, feeding, loading, finishing }
     private ReloadState reloadState;
     private int whatReloadState;
-    
+
 
     private void Start()
     {
@@ -28,10 +28,11 @@ public class rocketLauncher : Weapon
         switch (reloadState)
         {
             case ReloadState.ready:
-
-                if(whatReloadState == 1)
+                print("1");
+                if (whatReloadState == 1)
                 {
-                    
+
+
                     reloadState = ReloadState.feeding;
                     BeatManager.instance.addActionToQueue(feedAmmo);
 
@@ -39,7 +40,7 @@ public class rocketLauncher : Weapon
 
                 break;
             case ReloadState.feeding:
-
+                print("2");
                 if (whatReloadState == 2)
                 {
 
@@ -50,7 +51,7 @@ public class rocketLauncher : Weapon
 
                 break;
             case ReloadState.loading:
-
+                print("3");
                 if (whatReloadState == 3)
                 {
 
@@ -61,7 +62,7 @@ public class rocketLauncher : Weapon
 
                 break;
             case ReloadState.finishing:
-
+                print("4");
                 reloadState = ReloadState.ready;
                 whatReloadState = 0;
 
@@ -78,7 +79,7 @@ public class rocketLauncher : Weapon
             whatReloadState = 1;
             audioSource.Play();
             Instantiate(bullet, whereShoot.transform.position, whereShoot.transform.rotation);
-            reloading = true;
+
 
         }
         else
@@ -91,19 +92,16 @@ public class rocketLauncher : Weapon
     }
     public void feedAmmo()
     {
-
-        BeatManager.instance.addActionToQueue(load);
+        whatReloadState++;
 
     }
     public void load()
     {
-
-        BeatManager.instance.addActionToQueue(reloadDone);
+        whatReloadState++;
 
     }
     public void reloadDone()
     {
-
         reloading = false;
 
     }

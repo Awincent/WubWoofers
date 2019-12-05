@@ -119,6 +119,7 @@ public class rocket : MonoBehaviour
     {
 
         active = true;
+        trail.SetActive(true);
 
     }
 
@@ -157,7 +158,7 @@ public class rocket : MonoBehaviour
         //explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(explotionSize, explotionSize, explotionSize), explodeSpeed);
         if (explosionTrue == false)
         {
-            audioSource.volume = .2f;
+            //audioSource.volume = .2f;
             explosionTrue = true;
             audioSource.clip = explosionSound;
             audioSource.Play();
@@ -167,7 +168,7 @@ public class rocket : MonoBehaviour
 
     private void PlayImplosionSound()
     {
-        audioSource.volume = .5f;
+        //audioSource.volume = .5f;
 
         implotionTrue = true;
         audioSource.clip = implosionSound;
