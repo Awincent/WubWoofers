@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Hubert : MonoBehaviour
 {
+    public float hubertSpeed;
     GameObject hubert;
-    Vector3 vector = new Vector3(.05f,0,.05f);
+    Vector3 vector;
 
     // Start is called before the first frame update
     void Start()
     {
+        
+        vector = new Vector3(hubertSpeed,0,hubertSpeed);
         hubert = this.gameObject;
     }
 
