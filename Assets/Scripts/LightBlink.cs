@@ -25,19 +25,35 @@ public class LightBlink : MonoBehaviour
             bool alreadyAdded = BeatManager.instance.allTimedActions.Contains(LampBlink);
 
 
-            if (alreadyAdded == false && standardTempo == true)
+            if(halfTempo)
             {
 
-                BeatManager.instance.addActionToQueue(LampBlink);
+                if (alreadyAdded == false)
+                {
+                    BeatManager.instance.addActionToHalfbeatQueue(LampBlink);
 
-            }            
-            else if (alreadyAdded == false && doubleTempo == true)
+                }
+
+            }
+            else if (standardTempo)
             {
 
-                BeatManager.instance.addActionToHalfbeatQueue(LampBlink);
+                if (alreadyAdded == false)
+                {
+                    BeatManager.instance.addActionToQueue(LampBlink);
 
-            }   
-    }
+                }
+            }
+            else if (doubleTempo)
+            {
+
+                if (alreadyAdded == false)
+                {
+                    BeatManager.instance.addActionToHalfbeatQueue(LampBlink);
+                }
+
+            }
+        }
 
     public void LampBlink()
     {
