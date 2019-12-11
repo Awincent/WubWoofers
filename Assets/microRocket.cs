@@ -15,6 +15,8 @@ public class microRocket : MonoBehaviour
     [SerializeField] float explodeTime;
     float remainingExplodeTime;
     bool active = false;
+    [SerializeField] float timeTillActive;
+    float remainingTimeTillActive;
     [SerializeField] GameObject explotion;
     [SerializeField] GameObject model;
     [SerializeField] float timeTillDeath;
@@ -24,10 +26,11 @@ public class microRocket : MonoBehaviour
     GameObject[] enemies;
     GameObject targetEnemy;
     Vector3 direction;
+    bool exploding = false;
 
     void Start()
     {
-
+        remainingTimeTillActive = timeTillActive;
         speed = 1f;
         rb = GetComponent<Rigidbody>();
 
@@ -35,13 +38,34 @@ public class microRocket : MonoBehaviour
 
     void Update()
     {
+        
+        if(remainingTimeTillActive > 0)
+        {
+
+            remainingTimeTillActive -= Time.deltaTime;
+
+        }
+        else
+        {
+
+            BeatManager.instance.addActionToQueue(setActive);
+
+        }
+
+        remainingTimeTillDeath -= Time.deltaTime;
 
         speed = Mathf.Lerp(speed, maxSpeed, acceleration);
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        
 
-        if (enemies[0] != null)
+        if (exploding == true)
+        {
+
+
+
+        }
+
+        if (enemies[0] != null && exploding == false && active == true)
         {
             targetEnemy = enemies[0];
 
@@ -60,6 +84,41 @@ public class microRocket : MonoBehaviour
 
                 print(targetEnemy);
             }
+
+
+            direction = targetEnemy.transform.position - transform.position;
+
+            transform.forward = Vector3.Lerp(transform.forward, direction, targetingSpeed);
+        }
+        else if(exploding == true)
+        {
+
+            rb.velocity = new Vector3(0,0,0);
+            remainingExplodeTime -= Time.deltaTime;
+
+            if (remainingExplodeTime >= explodeTime / 2)
+            {
+
+
+                explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(explotionSize, explotionSize, explotionSize), explodeSpeed);
+
+            }
+            else if (remainingExplodeTime < explodeTime / 2)
+            {
+
+                    explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(0, 0, 0), explodeSpeed);
+
+                
+            }
+            if (remainingExplodeTime <= 0)
+            {
+
+
+                //Destroy(this.gameObject);
+                addDeleteToQueue();
+
+            }
+
         }
 
         //if (targetEnemy != null)
@@ -77,11 +136,41 @@ public class microRocket : MonoBehaviour
 
         //Vector3.Lerp(transform.forward, direction, targetingSpeed);
 
-        direction = targetEnemy.transform.position - transform.position;
-
-        transform.forward = Vector3.Lerp(transform.forward, direction, targetingSpeed);
 
         rb.velocity = transform.forward * speed;
 
+    }
+
+
+    public void Explode()
+    {
+
+        model.SetActive(false);
+        explotion.SetActive(true);
+        rb.isKinematic = true;
+        exploding = true;
+
+    }
+    public void setActive()
+    {
+
+        active = true;
+
+    }
+    public void addDeleteToQueue()
+    {
+
+        Destroy(this.gameObject);
+
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+
+            collider.enabled = false;
+            print("OOga");
+            BeatManager.instance.addActionToQueue(Explode);
+        }
     }
 }
