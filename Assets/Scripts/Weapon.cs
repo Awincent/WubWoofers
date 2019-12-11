@@ -113,7 +113,8 @@ public class Weapon : MonoBehaviour
 
 
                 rb.isKinematic = false;
-                //rb.velocity = actingController.GetComponent<Rigidbody>().velocity;
+                rb.velocity = actingController.GetComponent<SteamVR_Behaviour_Pose>().GetVelocity();
+                rb.angularVelocity = actingController.GetComponent<SteamVR_Behaviour_Pose>().GetAngularVelocity();
                 actingController = null;
                 grabbingController = null;
                 transform.parent = null;
