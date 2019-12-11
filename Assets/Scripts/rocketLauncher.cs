@@ -28,7 +28,7 @@ public class rocketLauncher : Weapon
         switch (reloadState)
         {
             case ReloadState.ready:
-                print("1");
+
                 if (whatReloadState == 1)
                 {
 
@@ -40,7 +40,7 @@ public class rocketLauncher : Weapon
 
                 break;
             case ReloadState.feeding:
-                print("2");
+
                 if (whatReloadState == 2)
                 {
 

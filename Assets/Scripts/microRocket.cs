@@ -9,14 +9,13 @@ public class microRocket : MonoBehaviour
     [SerializeField] public float maxSpeed;
     float speed;
     [SerializeField] public float acceleration;
+    [SerializeField] public float decceleration;
     [SerializeField] float explotionSize;
     [SerializeField] float targetingSpeed;
     [SerializeField] float explodeSpeed;
     [SerializeField] float explodeTime;
     float remainingExplodeTime;
     bool active = false;
-    [SerializeField] float timeTillActive;
-    float remainingTimeTillActive;
     [SerializeField] GameObject explotion;
     [SerializeField] GameObject model;
     [SerializeField] float timeTillDeath;
@@ -30,40 +29,48 @@ public class microRocket : MonoBehaviour
 
     void Start()
     {
-        remainingTimeTillActive = timeTillActive;
-        speed = 1f;
+        speed = 10f;
         rb = GetComponent<Rigidbody>();
+        collider = GetComponent<CapsuleCollider>();
+        remainingTimeTillDeath = timeTillDeath;
+        BeatManager.instance.addActionToQueue(setActive);
 
     }
 
     void Update()
     {
-        
-        if(remainingTimeTillActive > 0)
+
+        rb.velocity = transform.forward * speed;
+
+        if (active == false && targetEnemy == null)
         {
 
-            remainingTimeTillActive -= Time.deltaTime;
+            speed = Mathf.Lerp(speed, 0, decceleration);
 
         }
         else
         {
 
-            BeatManager.instance.addActionToQueue(setActive);
+            speed = Mathf.SmoothStep(speed, maxSpeed, acceleration);
 
         }
 
         remainingTimeTillDeath -= Time.deltaTime;
+        
+        if(remainingTimeTillDeath < 0)
+        {
 
-        speed = Mathf.Lerp(speed, maxSpeed, acceleration);
+            Explode();
+
+        }
+
+        ////speed = Mathf.Lerp(speed, maxSpeed, acceleration);
+        
+
+        print(speed);
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if (exploding == true)
-        {
-
-
-
-        }
 
         if (enemies[0] != null && exploding == false && active == true)
         {
@@ -88,13 +95,14 @@ public class microRocket : MonoBehaviour
 
             direction = targetEnemy.transform.position - transform.position;
 
-            transform.forward = Vector3.Lerp(transform.forward, direction, targetingSpeed);
+            transform.forward = Vector3.LerpUnclamped(transform.forward, direction, targetingSpeed);
         }
         else if(exploding == true)
         {
-
+            
             rb.velocity = new Vector3(0,0,0);
             remainingExplodeTime -= Time.deltaTime;
+            explotion.SetActive(true);
 
             if (remainingExplodeTime >= explodeTime / 2)
             {
@@ -137,14 +145,14 @@ public class microRocket : MonoBehaviour
         //Vector3.Lerp(transform.forward, direction, targetingSpeed);
 
 
-        rb.velocity = transform.forward * speed;
+
 
     }
 
 
     public void Explode()
     {
-
+        remainingExplodeTime = explodeTime;
         model.SetActive(false);
         explotion.SetActive(true);
         rb.isKinematic = true;
