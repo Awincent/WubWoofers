@@ -7,6 +7,8 @@ public class pitto : Weapon
 {
     bool holding = false;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,12 @@ public class pitto : Weapon
     // Update is called once per frame
     void Update()
     {
+
+        //Debug command
+        if (Input.GetKey(KeyCode.Q))
+        {
+                BeatManager.instance.addActionToHalfbeatQueue(Shoot);
+        }
 
         base.Update();
 
@@ -124,6 +132,7 @@ public class pitto : Weapon
     {
 
         audioSource.Play();
+        animator.SetTrigger("PittoTrigger");
 
         Instantiate(bullet, whereShoot.transform.position, whereShoot.transform.rotation);
 
