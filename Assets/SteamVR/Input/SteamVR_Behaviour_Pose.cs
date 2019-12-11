@@ -236,7 +236,7 @@ namespace Valve.VR
         public void Update()
         {
 
-            print(GetComponent<Rigidbody>().velocity);
+            //print(GetComponent<Rigidbody>().velocity);
 
         }
 
