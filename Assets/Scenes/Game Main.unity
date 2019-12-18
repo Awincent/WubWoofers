@@ -3879,6 +3879,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8527736150880987984, guid: 6af37f89b1e36e648b5d6896845a71e5,
+        type: 3}
+      propertyPath: grabDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527736150880987984, guid: 6af37f89b1e36e648b5d6896845a71e5,
+        type: 3}
+      propertyPath: shoot.actionPath
+      value: /actions/default/in/GrabPinch
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527736150880987984, guid: 6af37f89b1e36e648b5d6896845a71e5,
+        type: 3}
+      propertyPath: grab.actionPath
+      value: /actions/default/in/GrabGrip
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527736150880987984, guid: 6af37f89b1e36e648b5d6896845a71e5,
+        type: 3}
+      propertyPath: leftControllerSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527736150880987984, guid: 6af37f89b1e36e648b5d6896845a71e5,
+        type: 3}
+      propertyPath: rightControllerSource
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6af37f89b1e36e648b5d6896845a71e5, type: 3}
 --- !u!1 &408947306
@@ -6035,8 +6060,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7980375734921172826, guid: 3435dd6fb752a1e438b665f32db8dcdf,
         type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -2.7052703
+      propertyPath: m_RootOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -7980375734921172826, guid: 3435dd6fb752a1e438b665f32db8dcdf,
         type: 3}
@@ -8503,7 +8528,7 @@ PrefabInstance:
     - target: {fileID: 6636516327389264102, guid: 7faf4fb1a5449b742a196d1f7c53c8f2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6636516327389264102, guid: 7faf4fb1a5449b742a196d1f7c53c8f2,
         type: 3}
