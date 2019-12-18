@@ -13,6 +13,8 @@ public class MicroRocketLauncher : Weapon
     private ReloadState reloadState;
     private int whatReloadState;
 
+    public Animator animator;
+
 
     private void Start()
     {
@@ -79,6 +81,7 @@ public class MicroRocketLauncher : Weapon
 
             whatReloadState = 1;
             audioSource.Play();
+            animator.SetTrigger("Shoot");
 
             foreach (GameObject item in shootPoints)
             {
