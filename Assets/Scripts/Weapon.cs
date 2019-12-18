@@ -12,10 +12,10 @@ public class Weapon : MonoBehaviour
     protected static GameObject leftModel; //p
     protected static GameObject rightController; //p
     protected static GameObject rightModel; //p
-    public static SteamVR_Action_Boolean shoot;
-    public static SteamVR_Action_Boolean grab;
-    public static SteamVR_Input_Sources leftControllerSource;
-    public static SteamVR_Input_Sources rightControllerSource;
+    public SteamVR_Action_Boolean shoot;
+    public SteamVR_Action_Boolean grab;
+    public SteamVR_Input_Sources leftControllerSource;
+    public SteamVR_Input_Sources rightControllerSource;
     public bool grabbed = false;
     protected Rigidbody rb;
     protected GameObject grabbingController;
@@ -29,6 +29,16 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
+
+
+        leftController = GameObject.FindGameObjectWithTag("controllerLeft");
+        rightController = GameObject.FindGameObjectWithTag("controllerRight");
+
+        leftModel = leftController.transform.Find("Model").gameObject;
+        rightModel = rightController.transform.Find("Model").gameObject;
+
+
+
         rb = GetComponent<Rigidbody>();
         grab.AddOnStateDownListener(SqueezeOut, leftControllerSource);
         grab.AddOnStateUpListener(SqueezeIn, leftControllerSource);
@@ -41,13 +51,6 @@ public class Weapon : MonoBehaviour
         grabbingController = null;
 
         snapSoundPlayer = GameObject.FindGameObjectWithTag("SnapSoundPlayer").GetComponent<AudioSource>();
-
-        leftController = GameObject.FindGameObjectWithTag("controllerLeft");
-        rightController = GameObject.FindGameObjectWithTag("controllerRight");
-
-        leftModel = leftController.transform.Find("Model").gameObject;
-        rightModel = rightController.transform.Find("Model").gameObject;
-
 
         
         spawnPosition = gameObject.transform.position;

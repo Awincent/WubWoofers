@@ -204,9 +204,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4057532008514946090, guid: b54bcacfbfd3482429d273ebc74ae185, type: 3}
   whereShoot: {fileID: 0}
-  grabDistance: 0
+  grabDistance: 1
+  shoot:
+    actionPath: /actions/default/in/GrabPinch
+    needsReinit: 0
+  grab:
+    actionPath: /actions/default/in/GrabGrip
+    needsReinit: 0
+  leftControllerSource: 1
+  rightControllerSource: 2
   grabbed: 0
-  pickupTimer: 0
+  pickupTimer: 0.1
+  spawnPosition: {x: 0, y: 0, z: 0}
+  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
   shootPoints:
   - {fileID: 1646103642123112371}
   - {fileID: 8605739757896994150}
