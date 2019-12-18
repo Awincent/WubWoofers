@@ -14,6 +14,7 @@ TagManager:
   - controllerRight
   - EnemySoundPlayer
   - SnapSoundPlayer
+  - WorldBorder
   layers:
   - Default
   - TransparentFX

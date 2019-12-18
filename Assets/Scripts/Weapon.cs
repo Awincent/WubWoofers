@@ -23,6 +23,8 @@ public class Weapon : MonoBehaviour
     protected float currentPickupTimer;
     protected AudioSource snapSoundPlayer;
     protected AudioSource audioSource;
+    public Vector3 spawnPosition;
+    public Quaternion spawnRotation;
 
     // Start is called before the first frame update
     protected void Start()
@@ -46,6 +48,10 @@ public class Weapon : MonoBehaviour
         leftModel = leftController.transform.Find("Model").gameObject;
         rightModel = rightController.transform.Find("Model").gameObject;
 
+
+        
+        spawnPosition = gameObject.transform.position;
+        spawnRotation = gameObject.transform.rotation;
     }
 
     // Update is called once per frame
@@ -197,5 +203,18 @@ public class Weapon : MonoBehaviour
 
     }
 
+    protected void OnTriggerEnter(Collider other)
+    {
 
+        if(other.tag == "WorldBorder")
+        {
+
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            transform.position = spawnPosition;
+            transform.rotation = spawnRotation;
+            print("OObidoo");
+        }
+
+    }
 }
