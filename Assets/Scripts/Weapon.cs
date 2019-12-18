@@ -8,14 +8,14 @@ public class Weapon : MonoBehaviour
     public GameObject bullet;
     public GameObject whereShoot;
     public float grabDistance;
-    protected GameObject leftController; //p
-    protected GameObject leftModel; //p
-    protected GameObject rightController; //p
-    protected GameObject rightModel; //p
-    public SteamVR_Action_Boolean shoot;
-    public SteamVR_Action_Boolean grab;
-    public SteamVR_Input_Sources leftControllerSource;
-    public SteamVR_Input_Sources rightControllerSource;
+    protected static GameObject leftController; //p
+    protected static GameObject leftModel; //p
+    protected static GameObject rightController; //p
+    protected static GameObject rightModel; //p
+    public static SteamVR_Action_Boolean shoot;
+    public static SteamVR_Action_Boolean grab;
+    public static SteamVR_Input_Sources leftControllerSource;
+    public static SteamVR_Input_Sources rightControllerSource;
     public bool grabbed = false;
     protected Rigidbody rb;
     protected GameObject grabbingController;
