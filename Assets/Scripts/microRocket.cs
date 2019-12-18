@@ -64,10 +64,15 @@ public class microRocket : MonoBehaviour
 
         remainingTimeTillDeath -= Time.deltaTime;
         
-        if(remainingTimeTillDeath < 0)
+        if(remainingTimeTillDeath < 0 && exploding != true)
         {
             BeatManager.instance.addActionToQueue(Explode);
-            
+            remainingExplodeTime = explodeTime;
+
+        }
+        else if(remainingTimeTillDeath < 0 && exploding == false){
+
+            Destroy(this.gameObject, remainingExplodeTime);
 
         }
 
@@ -81,10 +86,12 @@ public class microRocket : MonoBehaviour
 
         if (enemies[0] != null && exploding == false && active == true)
         {
-            targetEnemy = enemies[0];
 
+            if(targetEnemy == null){
+
+                
             targetEnemy = enemies[Random.Range(0, enemies.Length)];
-
+            }
 
             direction = targetEnemy.transform.position - transform.position;
 
@@ -96,7 +103,9 @@ public class microRocket : MonoBehaviour
             rb.velocity = new Vector3(0,0,0);
             remainingExplodeTime -= Time.deltaTime;
             explotion.SetActive(true);
+            //Destroy(this.gameObject, explodeTime);
 
+            print(remainingExplodeTime);
             if (remainingExplodeTime > explodeTime / 2)
             {
 
@@ -114,9 +123,9 @@ public class microRocket : MonoBehaviour
             if (remainingExplodeTime <= 0)
             {
 
-
-                //Destroy(this.gameObject);
-                addDeleteToQueue();
+                exploding = false;
+                Destroy(this.gameObject);
+                //addDeleteToQueue();
 
             }
 
@@ -145,8 +154,12 @@ public class microRocket : MonoBehaviour
 
     public void Explode()
     {
-        remainingExplodeTime = explodeTime;
+
+        if(model != null){
         model.SetActive(false);
+
+        }
+
         explotion.SetActive(true);
         exploding = true;
 
@@ -155,6 +168,9 @@ public class microRocket : MonoBehaviour
     {
 
 
+            targetEnemy = enemies[0];
+
+            targetEnemy = enemies[Random.Range(0, enemies.Length)];
 
         active = true;
         print("Set to active");
@@ -168,9 +184,10 @@ public class microRocket : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && rb.isKinematic == false)
         {
-
+            
+            remainingExplodeTime = explodeTime;
             collider.enabled = false;
             print("OOga");
             BeatManager.instance.addActionToQueue(Explode);

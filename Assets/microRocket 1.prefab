@@ -55,7 +55,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 0.1
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -872,7 +872,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -881,7 +881,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
+          value: 0.5810776
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1009,7 +1009,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 0.14865112
+          value: 0
           inSlope: 1
           outSlope: 1
           tangentMode: 0
@@ -3955,7 +3955,7 @@ ParticleSystem:
     textureMode: 0
     ribbonCount: 1
     shadowBias: 0.5
-    worldSpace: 0
+    worldSpace: 1
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
@@ -4083,7 +4083,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 1, b: 0.9717827, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4726,7 +4726,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1cf4e677307b6304ebc3e90a34d338ad, type: 2}
+  - {fileID: 2100000, guid: 4710ce4b1de71d249bb01ef2bc195aee, type: 2}
   - {fileID: 2100000, guid: d68098a902c3f744f875e05313e204b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4833,16 +4833,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5484299f45e3f754698b855de0968e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 50
-  acceleration: 0.4
+  maxSpeed: 60
+  acceleration: 0.2
   decceleration: 0.1
-  explotionSize: 5
-  targetingSpeed: 0.09
-  explodeSpeed: 5
+  explotionSize: 3
+  targetingSpeed: 3.44
+  explodeSpeed: 0.1
   explodeTime: 2
   explotion: {fileID: 4057532008568068188}
   model: {fileID: 4057532009194121923}
-  timeTillDeath: 5
+  timeTillDeath: 3
 --- !u!54 &4057532008514946091
 Rigidbody:
   m_ObjectHideFlags: 0
