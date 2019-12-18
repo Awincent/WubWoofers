@@ -83,26 +83,12 @@ public class microRocket : MonoBehaviour
         {
             targetEnemy = enemies[0];
 
-            foreach (GameObject item in enemies)
-            {
-                if (enemies[0] != null)
-                {
-                    if (Vector3.Distance(transform.position, item.transform.position) < Vector3.Distance(transform.position, targetEnemy.transform.position))
-                    {
-
-                        targetEnemy = item;
-
-                    }
-
-                }
-
-                print(targetEnemy);
-            }
+            targetEnemy = enemies[Random.Range(0, enemies.Length)];
 
 
             direction = targetEnemy.transform.position - transform.position;
 
-            transform.forward = Vector3.Lerp(transform.forward, direction, targetingSpeed);
+            transform.forward = Vector3.MoveTowards(transform.forward, direction, targetingSpeed);
         }
         else if(exploding == true)
         {
@@ -151,7 +137,7 @@ public class microRocket : MonoBehaviour
 
         //Vector3.Lerp(transform.forward, direction, targetingSpeed);
 
-
+        print(targetEnemy);
 
 
     }
@@ -162,7 +148,6 @@ public class microRocket : MonoBehaviour
         remainingExplodeTime = explodeTime;
         model.SetActive(false);
         explotion.SetActive(true);
-        rb.isKinematic = true;
         exploding = true;
 
     }
@@ -180,6 +165,7 @@ public class microRocket : MonoBehaviour
         Destroy(this.gameObject);
 
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -188,6 +174,8 @@ public class microRocket : MonoBehaviour
             collider.enabled = false;
             print("OOga");
             BeatManager.instance.addActionToQueue(Explode);
+            rb.isKinematic = true;
+            rb.velocity = Vector3.zero;
         }
     }
 }
