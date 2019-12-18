@@ -207,7 +207,10 @@ MonoBehaviour:
   grabDistance: 0
   grabbed: 0
   pickupTimer: 0
-  shootPoints: []
+  shootPoints:
+  - {fileID: 1646103642123112371}
+  - {fileID: 8605739757896994150}
+  - {fileID: 4663749981136009465}
 --- !u!1 &4663749981136009465
 GameObject:
   m_ObjectHideFlags: 0
