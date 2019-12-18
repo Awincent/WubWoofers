@@ -33,7 +33,6 @@ public class microRocket : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<CapsuleCollider>();
         remainingTimeTillDeath = timeTillDeath;
-        BeatManager.instance.addActionToQueue(setActive);
 
     }
 
@@ -42,11 +41,17 @@ public class microRocket : MonoBehaviour
 
         rb.velocity = transform.forward * speed;
 
-        if (active == false && targetEnemy == null)
+        if (active == false || targetEnemy == null)
         {
 
             speed = Mathf.Lerp(speed, 0, decceleration);
+            if(active == false)
+            {
 
+
+                BeatManager.instance.addActionToQueue(setActive);
+
+            };
         }
         else
         {
@@ -55,19 +60,21 @@ public class microRocket : MonoBehaviour
 
         }
 
+        
+
         remainingTimeTillDeath -= Time.deltaTime;
         
         if(remainingTimeTillDeath < 0)
         {
-
-            Explode();
+            BeatManager.instance.addActionToQueue(Explode);
+            
 
         }
 
         ////speed = Mathf.Lerp(speed, maxSpeed, acceleration);
         
 
-        print(speed);
+        print(active);
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -95,7 +102,7 @@ public class microRocket : MonoBehaviour
 
             direction = targetEnemy.transform.position - transform.position;
 
-            transform.forward = Vector3.LerpUnclamped(transform.forward, direction, targetingSpeed);
+            transform.forward = Vector3.Lerp(transform.forward, direction, targetingSpeed);
         }
         else if(exploding == true)
         {
@@ -104,14 +111,14 @@ public class microRocket : MonoBehaviour
             remainingExplodeTime -= Time.deltaTime;
             explotion.SetActive(true);
 
-            if (remainingExplodeTime >= explodeTime / 2)
+            if (remainingExplodeTime > explodeTime / 2)
             {
 
 
                 explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(explotionSize, explotionSize, explotionSize), explodeSpeed);
 
             }
-            else if (remainingExplodeTime < explodeTime / 2)
+            else if (remainingExplodeTime < explodeTime / 2 && remainingExplodeTime > 0)
             {
 
                     explotion.transform.localScale = Vector3.Lerp(explotion.transform.localScale, new Vector3(0, 0, 0), explodeSpeed);
@@ -162,8 +169,10 @@ public class microRocket : MonoBehaviour
     public void setActive()
     {
 
-        active = true;
 
+
+        active = true;
+        print("Set to active");
     }
     public void addDeleteToQueue()
     {
