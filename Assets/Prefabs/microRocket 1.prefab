@@ -43,10 +43,10 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4057532008514946090}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 0.4
+  m_Radius: 0.03
+  m_Height: 0.1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4057532008514946088
@@ -65,12 +65,12 @@ MonoBehaviour:
   acceleration: 0.01
   decceleration: 0.1
   explotionSize: 5
-  targetingSpeed: 0.05
-  explodeSpeed: 0.1
-  explodeTime: 1
+  targetingSpeed: 0.09
+  explodeSpeed: 5
+  explodeTime: 2
   explotion: {fileID: 4057532008568068188}
   model: {fileID: 4057532009194121923}
-  timeTillDeath: 10
+  timeTillDeath: 5
 --- !u!54 &4057532008514946091
 Rigidbody:
   m_ObjectHideFlags: 0

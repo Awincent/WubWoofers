@@ -215,6 +215,8 @@ MonoBehaviour:
   rightControllerSource: 2
   grabbed: 0
   pickupTimer: 0.1
+  spawnPosition: {x: 0, y: 0, z: 0}
+  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4355695527222090958
 GameObject:
   m_ObjectHideFlags: 0
